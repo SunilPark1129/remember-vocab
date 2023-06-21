@@ -1,0 +1,28 @@
+.feature {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 900;
+  margin: 0.5rem;
+}
+.feature__content {
+  display: flex;
+  gap: 0.3rem;
+}
+.feature__box {
+  width: 1.3rem;
+  height: 1.3rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+.feature__box:hover {
+  outline: 1px dashed rgb(65, 65, 65);
+}
+.feature__box img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  pointer-events: none;
+}/*# sourceMappingURL=feature.css.map */

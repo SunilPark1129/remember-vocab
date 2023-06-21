@@ -1,0 +1,84 @@
+.zone {
+  position: absolute;
+  z-index: 900;
+  left: 0;
+  top: 0;
+  margin: 0.5rem;
+  &__content {
+    display: flex;
+  }
+  &__trigger {
+    left: 0;
+    top: 0;
+    height: 1.3rem;
+    width: 1.3rem;
+    z-index: 900;
+    position: absolute;
+    cursor: pointer;
+    &--actived {
+      pointer-events: none;
+    }
+  }
+  &__btn {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 1.3rem;
+    height: 1.3rem;
+    border: none;
+    border-radius: 50%;
+    transition-property: transform, filter, border-radius;
+    transition-duration: 0.5s, 0.3s, 0.3s;
+    cursor: pointer;
+    z-index: 2;
+    // filter: brightness(50%);
+    &:nth-of-type(1) {
+      background-color: rgb(148, 192, 119);
+    }
+    &:nth-of-type(2) {
+      background-color: rgb(102, 133, 219);
+    }
+    &:nth-of-type(3) {
+      background-color: rgb(211, 95, 95);
+    }
+    &:nth-of-type(4) {
+      background-color: rgb(61, 61, 56);
+    }
+    &--transform {
+      border-radius: 4px;
+      &:nth-of-type(1) {
+        transform: translateY(0%);
+      }
+      &:nth-of-type(2) {
+        transform: translateY(120%);
+      }
+      &:nth-of-type(3) {
+        transform: translateY(240%);
+      }
+      &:nth-of-type(4) {
+        transform: translateY(360%);
+      }
+    }
+    &:hover {
+      filter: brightness(120%);
+    }
+    &--actived {
+      border-radius: 4px;
+      z-index: 9;
+    }
+  }
+  &__text {
+    top: 0;
+    display: flex;
+    position: absolute;
+    width: 10rem;
+    height: 1.3rem;
+    font-size: 0.8rem;
+    left: 1.6rem;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: 0.5s transform;
+  }
+}
