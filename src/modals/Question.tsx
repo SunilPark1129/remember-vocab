@@ -38,7 +38,7 @@ export default function Question() {
       </div>
       <div className="modal__question modal__question--shuffle">
         <div>
-          <p>Shuffle Stage Items</p>
+          <p>Shuffle Stage Vocabs</p>
         </div>
       </div>
       <div className="modal__question modal__question--up">
@@ -49,6 +49,11 @@ export default function Question() {
       <div className="modal__question modal__question--down">
         <div>
           <p>Downgrade Vocab to Previous Stage</p>
+        </div>
+      </div>
+      <div className="modal__question modal__question--drag">
+        <div>
+          <p>&larr; Drag to Move Index &rarr;</p>
         </div>
       </div>
     </div>

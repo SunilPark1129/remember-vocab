@@ -114,7 +114,7 @@
       top: 1rem;
       div {
         left: 0;
-        height: 1rem;
+        height: 0.5rem;
         p {
           top: 100%;
           left: -0.5rem;
@@ -126,7 +126,7 @@
       top: 1rem;
       div {
         top: 0;
-        height: 3rem;
+        height: 2.5rem;
         p {
           top: 100%;
           right: -1rem;
@@ -138,7 +138,7 @@
       top: 1rem;
       div {
         top: 0;
-        height: 5rem;
+        height: 4.5rem;
         p {
           top: 100%;
           right: -1rem;
@@ -150,7 +150,7 @@
       top: 1rem;
       div {
         top: 0;
-        height: 7rem;
+        height: 6.5rem;
         p {
           top: 100%;
           right: -1rem;
@@ -162,7 +162,7 @@
       top: 1rem;
       div {
         top: 0;
-        height: 9rem;
+        height: 8.5rem;
         p {
           top: 100%;
           right: -1rem;
@@ -216,6 +216,21 @@
         p {
           bottom: 100%;
           right: -1rem;
+        }
+      }
+    }
+    &--drag {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      div {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        p {
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
         }
       }
     }
