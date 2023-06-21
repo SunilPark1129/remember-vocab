@@ -4,6 +4,7 @@ import { useStore } from "../store";
 import imgPlus from "../images/plus.svg";
 import imgDelete from "../images/delete.svg";
 import imgEdit from "../images/edit.svg";
+import imgQuestion from "../images/question.svg";
 
 const units = [
   {
@@ -21,6 +22,7 @@ const units = [
     img: imgEdit,
     id: 2,
   },
+  { label: "Question", img: imgQuestion, id: 3 },
 ];
 export default function Feature() {
   const setModal = useStore((store) => store.setModal);

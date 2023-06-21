@@ -185,15 +185,17 @@ export default function Vocabs() {
             </div>
           </div>
         ) : (
-          <div className="vocabs__items__front">
-            <p>
-              You have no vocabs in{" "}
-              <span>
-                {units[currentZone].charAt(0).toUpperCase() +
-                  units[currentZone].slice(1)}{" "}
-              </span>
-              Floor !
-            </p>
+          <div className="vocabs__items">
+            <div className="vocabs__items__front vocabs__items__front--none">
+              <p>
+                You have no vocabs in{" "}
+                <span>
+                  {units[currentZone].charAt(0).toUpperCase() +
+                    units[currentZone].slice(1)}{" "}
+                </span>
+                Floor !
+              </p>
+            </div>
           </div>
         )}
         <div className="vocabs__flip">
@@ -211,7 +213,11 @@ export default function Vocabs() {
             onClick={moveZoneHandler}
             name="up"
             title="happy"
-            disabled={currentZone === 3 ? true : false}
+            disabled={
+              vocabs[currentZone].length === 0 || currentZone === 3
+                ? true
+                : false
+            }
           >
             <img src={imgHappy} alt="happy" />
           </button>
@@ -220,13 +226,19 @@ export default function Vocabs() {
             onClick={moveZoneHandler}
             name="down"
             title="sad"
-            disabled={currentZone === 0 ? true : false}
+            disabled={
+              vocabs[currentZone].length === 0 || currentZone === 0
+                ? true
+                : false
+            }
           >
             <img src={imgSad} alt="sad" />
           </button>
         </div>
         <div className="vocabs__index">
-          <p>{`${currentPosition + 1} / ${vocabs[currentZone].length}`}</p>
+          <p>{`${
+            vocabs[currentZone].length === 0 ? 0 : currentPosition + 1
+          } / ${vocabs[currentZone].length}`}</p>
           <button
             className="vocabs__btn"
             onClick={() => {

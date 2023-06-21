@@ -23,6 +23,11 @@
       justify-content: center;
       text-align: center;
     }
+    &--question {
+      cursor: pointer;
+      background-color: transparent;
+      position: relative;
+    }
   }
   &__input-box {
     display: flex;
@@ -86,5 +91,133 @@
     height: 100%;
     background-color: rgba(63, 63, 63, 0.5);
     z-index: -1;
+  }
+  &__question {
+    position: absolute;
+    width: 1rem;
+    div {
+      position: absolute;
+      background-color: rgb(233, 233, 233);
+      width: 0.2rem;
+    }
+    p {
+      white-space: nowrap;
+      padding: 0.2rem 1rem;
+      font-size: 0.8rem;
+      background-color: rgb(233, 233, 233);
+      color: rgb(76, 76, 83);
+      border-radius: 4px;
+      position: absolute;
+    }
+    &--floor {
+      left: 0;
+      top: 1rem;
+      div {
+        left: 0;
+        height: 1rem;
+        p {
+          top: 100%;
+          left: -0.5rem;
+        }
+      }
+    }
+    &--plus {
+      right: 4rem;
+      top: 1rem;
+      div {
+        top: 0;
+        height: 3rem;
+        p {
+          top: 100%;
+          right: -1rem;
+        }
+      }
+    }
+    &--delete {
+      right: 2.5rem;
+      top: 1rem;
+      div {
+        top: 0;
+        height: 5rem;
+        p {
+          top: 100%;
+          right: -1rem;
+        }
+      }
+    }
+    &--edit {
+      right: 1rem;
+      top: 1rem;
+      div {
+        top: 0;
+        height: 7rem;
+        p {
+          top: 100%;
+          right: -1rem;
+        }
+      }
+    }
+    &--help {
+      right: -0.7rem;
+      top: 1rem;
+      div {
+        top: 0;
+        height: 9rem;
+        p {
+          top: 100%;
+          right: -1rem;
+        }
+      }
+    }
+    &--flip {
+      left: 0.5rem;
+      bottom: 1.8rem;
+      div {
+        bottom: 0;
+        height: 1rem;
+        p {
+          bottom: 100%;
+          left: -1rem;
+        }
+      }
+    }
+    &--shuffle {
+      left: calc(50% - -2.5rem);
+      transform: translateX(-50%);
+      bottom: 1.8rem;
+      z-index: 9;
+      div {
+        bottom: 0;
+        height: 3rem;
+        p {
+          bottom: 100%;
+          right: -1rem;
+        }
+      }
+    }
+    &--up {
+      right: 2.75rem;
+      bottom: 1.8rem;
+      div {
+        bottom: 0;
+        height: 5rem;
+        p {
+          bottom: 100%;
+          right: -1rem;
+        }
+      }
+    }
+    &--down {
+      right: -0.35rem;
+      bottom: 1.8rem;
+      div {
+        bottom: 0;
+        height: 7rem;
+        p {
+          bottom: 100%;
+          right: -1rem;
+        }
+      }
+    }
   }
 }

@@ -1,7 +1,9 @@
+import "./styles/modals.css";
+
 import Add from "./Add";
 import Delete from "./Delete";
 import Edit from "./Edit";
-import "./styles/modals.css";
+import Question from "./Question";
 
 import { useStore } from "../store";
 
@@ -26,6 +28,8 @@ export default function Modals() {
         <Delete />
       ) : modal === "Edit" ? (
         <Edit />
+      ) : modal === "Question" ? (
+        <Question />
       ) : null}
       <div className="modal__cover"></div>
     </div>

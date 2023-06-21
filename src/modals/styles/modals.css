@@ -25,6 +25,11 @@
   justify-content: center;
   text-align: center;
 }
+.modal__content--question {
+  cursor: pointer;
+  background-color: transparent;
+  position: relative;
+}
 .modal__input-box {
   display: flex;
   flex-direction: column;
@@ -87,4 +92,132 @@
   height: 100%;
   background-color: rgba(63, 63, 63, 0.5);
   z-index: -1;
+}
+.modal__question {
+  position: absolute;
+  width: 1rem;
+}
+.modal__question div {
+  position: absolute;
+  background-color: rgb(233, 233, 233);
+  width: 0.2rem;
+}
+.modal__question p {
+  white-space: nowrap;
+  padding: 0.2rem 1rem;
+  font-size: 0.8rem;
+  background-color: rgb(233, 233, 233);
+  color: rgb(76, 76, 83);
+  border-radius: 4px;
+  position: absolute;
+}
+.modal__question--floor {
+  left: 0;
+  top: 1rem;
+}
+.modal__question--floor div {
+  left: 0;
+  height: 1rem;
+}
+.modal__question--floor div p {
+  top: 100%;
+  left: -0.5rem;
+}
+.modal__question--plus {
+  right: 4rem;
+  top: 1rem;
+}
+.modal__question--plus div {
+  top: 0;
+  height: 3rem;
+}
+.modal__question--plus div p {
+  top: 100%;
+  right: -1rem;
+}
+.modal__question--delete {
+  right: 2.5rem;
+  top: 1rem;
+}
+.modal__question--delete div {
+  top: 0;
+  height: 5rem;
+}
+.modal__question--delete div p {
+  top: 100%;
+  right: -1rem;
+}
+.modal__question--edit {
+  right: 1rem;
+  top: 1rem;
+}
+.modal__question--edit div {
+  top: 0;
+  height: 7rem;
+}
+.modal__question--edit div p {
+  top: 100%;
+  right: -1rem;
+}
+.modal__question--help {
+  right: -0.7rem;
+  top: 1rem;
+}
+.modal__question--help div {
+  top: 0;
+  height: 9rem;
+}
+.modal__question--help div p {
+  top: 100%;
+  right: -1rem;
+}
+.modal__question--flip {
+  left: 0.5rem;
+  bottom: 1.8rem;
+}
+.modal__question--flip div {
+  bottom: 0;
+  height: 1rem;
+}
+.modal__question--flip div p {
+  bottom: 100%;
+  left: -1rem;
+}
+.modal__question--shuffle {
+  left: calc(50% + 2.5rem);
+  transform: translateX(-50%);
+  bottom: 1.8rem;
+  z-index: 9;
+}
+.modal__question--shuffle div {
+  bottom: 0;
+  height: 3rem;
+}
+.modal__question--shuffle div p {
+  bottom: 100%;
+  right: -1rem;
+}
+.modal__question--up {
+  right: 2.75rem;
+  bottom: 1.8rem;
+}
+.modal__question--up div {
+  bottom: 0;
+  height: 5rem;
+}
+.modal__question--up div p {
+  bottom: 100%;
+  right: -1rem;
+}
+.modal__question--down {
+  right: -0.35rem;
+  bottom: 1.8rem;
+}
+.modal__question--down div {
+  bottom: 0;
+  height: 7rem;
+}
+.modal__question--down div p {
+  bottom: 100%;
+  right: -1rem;
 }/*# sourceMappingURL=modals.css.map */

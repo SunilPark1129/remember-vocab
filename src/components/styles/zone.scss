@@ -71,13 +71,14 @@
     top: 0;
     display: flex;
     position: absolute;
-    width: 10rem;
     height: 1.3rem;
     font-size: 0.8rem;
     left: 1.6rem;
     align-items: center;
     border: none;
     background-color: transparent;
+    white-space: nowrap;
+    padding: 0 0.5rem;
     cursor: pointer;
     transition: 0.5s transform;
   }
