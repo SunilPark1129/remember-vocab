@@ -80,8 +80,6 @@ export default function Edit() {
       <div className="modal__input-box">
         <label>Description</label>
         <textarea
-          rows={20}
-          cols={30}
           name="description"
           value={vocab.description}
           onChange={changeHandler}
