@@ -103,9 +103,9 @@ export default function Vocabs() {
   }
 
   function pointerCancelHandler() {
-    if (posX > 120) {
+    if (posX > 80) {
       skipChnageHandler("left");
-    } else if (posX < -120) {
+    } else if (posX < -80) {
       skipChnageHandler("right");
     }
 
