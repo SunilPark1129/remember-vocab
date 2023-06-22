@@ -61,9 +61,9 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
       setViewFront(!isViewFront);
     }
 
-    if (posX > 80) {
+    if (posX > 40) {
       skipChnageHandler("left");
-    } else if (posX < -80) {
+    } else if (posX < -40) {
       skipChnageHandler("right");
     }
 
