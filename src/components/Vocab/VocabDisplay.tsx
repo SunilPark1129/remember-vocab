@@ -23,7 +23,6 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
   const currentPosition = useStore((store) => store.currentPosition);
 
   const isViewFront = useStore((store) => store.isViewFront);
-  const setViewFront = useStore((store) => store.setViewFront);
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
 
   const [isDragging, setDragging] = useState<boolean>(false);
@@ -57,10 +56,6 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
   }
 
   function pointerCancelHandler() {
-    if (isDragging && posX < 5 && posX > -5) {
-      setViewFront(!isViewFront);
-    }
-
     if (posX > 80) {
       skipChnageHandler("left");
     } else if (posX < -80) {
