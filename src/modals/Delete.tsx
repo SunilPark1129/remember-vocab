@@ -43,8 +43,8 @@ export default function Delete() {
     <div className="modal__content modal__content--delete">
       <p>Do you want to delete this item?</p>
       <div className="modal__button">
-        <button onClick={clickHandler}>Yes</button>
-        <button onClick={() => setModal(null)}>No</button>
+        <button onClick={clickHandler}>YES</button>
+        <button onClick={() => setModal(null)}>NO</button>
       </div>
     </div>
   );

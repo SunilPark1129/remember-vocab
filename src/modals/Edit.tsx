@@ -90,9 +90,9 @@ export default function Edit() {
           onClick={clickHandler}
           disabled={vocab.title && vocab.description ? false : true}
         >
-          Edit
+          EDIT
         </button>
-        <button onClick={() => setModal(null)}>Cancel</button>
+        <button onClick={() => setModal(null)}>CANCEL</button>
       </div>
     </div>
   );

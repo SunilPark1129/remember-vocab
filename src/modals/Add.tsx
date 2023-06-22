@@ -67,7 +67,7 @@ export default function Add() {
         >
           ADD
         </button>
-        <button onClick={() => setModal(null)}>CLOSE</button>
+        <button onClick={() => setModal(null)}>CANCEL</button>
       </div>
     </div>
   );
