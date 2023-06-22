@@ -1,5 +1,5 @@
 import "./styles/main.css";
-import Vocabs from "./Vocabs";
+import Vocabs from "./Vocab/Vocabs";
 import Feature from "./Feature";
 import SelectZone from "./SelectZone";
 import Modals from "../modals/Modals";

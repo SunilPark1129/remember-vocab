@@ -4,6 +4,9 @@
   left: 0;
   top: 0;
   margin: 0.5rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .zone__content {
   display: flex;
