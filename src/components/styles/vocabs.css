@@ -15,7 +15,7 @@
 }
 .vocabs__items {
   position: absolute;
-  touch-action: none;
+  touch-action: pan-y;
   left: 1.2rem;
   right: 1.2rem;
   top: 3rem;
@@ -75,7 +75,6 @@
   transform: rotateY(180deg);
   overflow: auto;
   background-color: rgb(221, 226, 240);
-  touch-action: pan-y;
 }
 .vocabs__items__back p {
   margin: auto;
