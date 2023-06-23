@@ -9,6 +9,8 @@ body {
   background-color: rgb(46, 46, 46);
   min-width: 300px;
   font-family: "Poppins", sans-serif;
+  /* prevent pull-to-refresh */
+  overscroll-behavior-y: contain;
 }
 
 button,

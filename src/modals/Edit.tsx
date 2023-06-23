@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useStore } from "../store";
 
-interface Vocab {
+interface InputProperty {
   title: string;
   description: string;
 }
 
-interface PayloadProprty extends Vocab {
+interface PayloadProprty extends InputProperty {
   id: number;
 }
 
@@ -14,12 +14,7 @@ const units = ["first", "second", "third", "completed"];
 
 export default function Edit() {
   const setModal = useStore((store) => store.setModal);
-
   const setViewFront = useStore((store) => store.setViewFront);
-
-  const currentZone = useStore((store) => store.currentZone);
-  const currentPosition = useStore((store) => store.currentPosition);
-
   const setEdit = useStore((store) => store.setEdit);
 
   const vocabs = useStore((store) => [
@@ -28,8 +23,10 @@ export default function Edit() {
     store.third,
     store.completed,
   ]);
+  const currentZone = useStore((store) => store.currentZone);
+  const currentPosition = useStore((store) => store.currentPosition);
 
-  const [vocab, setVocab] = useState<Vocab>({
+  const [InputValue, setInputValue] = useState<InputProperty>({
     title: vocabs[currentZone][currentPosition]?.title,
     description: vocabs[currentZone][currentPosition]?.description,
   });
@@ -40,28 +37,38 @@ export default function Edit() {
     }
   }, []);
 
-  function changeHandler(e: any) {
-    const { name, value } = e.target;
-    setVocab((prev) => ({ ...prev, [name]: value }));
+  function changeHandler(e: React.ChangeEvent) {
+    const { name, value } = e.target as HTMLInputElement;
+
+    // store input values
+    setInputValue((prev) => ({ ...prev, [name]: value }));
   }
 
   function clickHandler() {
-    if (vocab.title && vocab.description) {
+    if (InputValue.title && InputValue.description) {
       const { title, description, id } = vocabs[currentZone][currentPosition];
-      if (title === vocab.title && description === vocab.description) {
+
+      // if the property value is same with the input value, break the function
+      if (
+        title === InputValue.title &&
+        description === InputValue.description
+      ) {
         setModal(null);
         return;
       }
 
       const payload: PayloadProprty = {
-        title: vocab.title,
-        description: vocab.description,
+        title: InputValue.title,
+        description: InputValue.description,
         id: id,
       };
 
+      // replace with edited item into state management
       setEdit(units[currentZone], id, payload);
 
       setViewFront(true);
+
+      // close modal
       setModal(null);
     }
   }
@@ -73,7 +80,7 @@ export default function Edit() {
         <input
           type="text"
           name="title"
-          value={vocab.title}
+          value={InputValue.title}
           onChange={changeHandler}
         />
       </div>
@@ -81,14 +88,14 @@ export default function Edit() {
         <label>Description</label>
         <textarea
           name="description"
-          value={vocab.description}
+          value={InputValue.description}
           onChange={changeHandler}
         />
       </div>
       <div className="modal__button">
         <button
           onClick={clickHandler}
-          disabled={vocab.title && vocab.description ? false : true}
+          disabled={InputValue.title && InputValue.description ? false : true}
         >
           EDIT
         </button>

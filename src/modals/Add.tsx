@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStore } from "../store";
 
-interface Vocab {
+interface InputProperty {
   title: string;
   description: string;
 }
@@ -12,30 +12,37 @@ const initialValue = {
 };
 
 export default function Add() {
-  const [vocab, setVocab] = useState<Vocab>(initialValue);
+  const [inputValue, setInputValue] = useState<InputProperty>(initialValue);
 
   const setModal = useStore((store) => store.setModal);
   const addVocab = useStore((store) => store.addVocab);
-  const vocabID = useStore((store) => store.vocabID);
-
   const setCurrentZone = useStore((store) => store.setCurrentZone);
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
-  const lastIndex = useStore((store) => store.first.length);
   const setViewFront = useStore((store) => store.setViewFront);
 
-  function changeHandler(e: any) {
-    const { name, value } = e.target;
-    setVocab((prev) => ({ ...prev, [name]: value }));
+  const lastIndex = useStore((store) => store.first.length);
+  const vocabID = useStore((store) => store.vocabID);
+
+  function changeHandler(e: React.ChangeEvent): void {
+    const { name, value } = e.target as HTMLInputElement;
+
+    // store input values
+    setInputValue((prev) => ({ ...prev, [name]: value }));
   }
 
-  function clickHandler() {
-    if (vocab.title && vocab.description) {
-      addVocab(vocab.title, vocab.description, vocabID);
-      setVocab(initialValue);
+  function clickHandler(): void {
+    if (inputValue.title && inputValue.description) {
+      // store new item into state management
+      addVocab(inputValue.title, inputValue.description, vocabID);
 
+      setInputValue(initialValue);
+
+      // address and display the last added item
       setCurrentZone(0);
       setCurrentPosition(lastIndex);
       setViewFront(true);
+
+      // close modal
       setModal(null);
     }
   }
@@ -48,7 +55,7 @@ export default function Add() {
           type="text"
           name="title"
           maxLength={150}
-          value={vocab.title}
+          value={inputValue.title}
           onChange={changeHandler}
         />
       </div>
@@ -56,14 +63,14 @@ export default function Add() {
         <label>Description</label>
         <textarea
           name="description"
-          value={vocab.description}
+          value={inputValue.description}
           onChange={changeHandler}
         />
       </div>
       <div className="modal__button">
         <button
           onClick={clickHandler}
-          disabled={vocab.title && vocab.description ? false : true}
+          disabled={inputValue.title && inputValue.description ? false : true}
         >
           ADD
         </button>

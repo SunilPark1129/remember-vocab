@@ -7,15 +7,10 @@ import Question from "./Question";
 
 import { useStore } from "../store";
 
-interface StyledProperty {
-  opacity: any;
-  pointerEvents: any;
-}
-
 export default function Modals() {
   const modal = useStore((store) => store.modal);
 
-  const StyledModal: StyledProperty = {
+  const StyledModal: React.CSSProperties = {
     opacity: modal ? "1" : "0",
     pointerEvents: modal ? "auto" : "none",
   };

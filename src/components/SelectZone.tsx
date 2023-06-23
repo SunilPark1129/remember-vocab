@@ -1,25 +1,32 @@
-import { useState } from "react";
 import "./styles/zone.css";
+import { useState } from "react";
 import { useStore } from "../store";
+
+const units = ["first", "second", "third", "completed"];
 
 export default function SelectZone() {
   const currentZone = useStore((store) => store.currentZone);
   const setCurrentZone = useStore((store) => store.setCurrentZone);
-  const units = ["first", "second", "third", "completed"];
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
 
   const [hasTriggerOn, setTriggerOn] = useState<boolean>(false);
 
-  function triggerHandler() {
+  // when clicked, different zones are displayed to enable moving to another zone
+  function triggerHandler(): void {
+    // CSS style changes to display other zones
     setTriggerOn(true);
   }
 
-  function clickHandler(e: any) {
-    const { value } = e.target;
+  // move to other zone
+  function zoneClickHandler(e: React.MouseEvent<HTMLButtonElement>): void {
+    const { value } = e.target as HTMLInputElement;
     const nextZone: number = Number(value);
     setTriggerOn(false);
 
+    // ignore when clicked the same zone
     if (currentZone === nextZone) return;
+
+    // zone address
     setCurrentZone(nextZone);
     setCurrentPosition(0);
   }
@@ -27,24 +34,27 @@ export default function SelectZone() {
   return (
     <div className="zone">
       <div className="zone__content">
+        {/* prevent clicking the zone before trigger is on */}
         <div
           className={`zone__trigger ${
             hasTriggerOn && "zone__trigger--actived"
           }`}
           onClick={triggerHandler}
         ></div>
+        {/* display zone buttons */}
         {units.map((item, idx) => {
           return (
             <button
               className={`zone__btn ${
                 currentZone === idx && "zone__btn--actived"
               } ${hasTriggerOn && "zone__btn--transform"}`}
-              onClick={clickHandler}
+              onClick={zoneClickHandler}
               value={idx}
               key={item}
             ></button>
           );
         })}
+        {/* display zone title */}
         <button
           className="zone__text"
           style={{

@@ -1,5 +1,5 @@
-import React from "react";
 import "./styles/feature.css";
+import React from "react";
 import { useStore } from "../store";
 import imgPlus from "../images/plus.svg";
 import imgDelete from "../images/delete.svg";
@@ -24,6 +24,7 @@ const units = [
   },
   { label: "Question", img: imgQuestion, id: 3 },
 ];
+
 export default function Feature() {
   const setModal = useStore((store) => store.setModal);
 
@@ -31,6 +32,7 @@ export default function Feature() {
     const { name } = e.target as HTMLInputElement;
 
     if (name) {
+      // the string sent through state management is read to open the modal in the Modals component
       setModal(name);
     }
   }

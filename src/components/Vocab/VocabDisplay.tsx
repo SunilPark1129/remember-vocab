@@ -13,6 +13,8 @@ interface PropsProprty {
 }
 
 export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
+  const setCurrentPosition = useStore((store) => store.setCurrentPosition);
+
   const vocabs = useStore((store) => [
     store.first,
     store.second,
@@ -21,45 +23,55 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
   ]);
   const currentZone: number = useStore((store) => store.currentZone);
   const currentPosition = useStore((store) => store.currentPosition);
-
   const isViewFront = useStore((store) => store.isViewFront);
-  const setCurrentPosition = useStore((store) => store.setCurrentPosition);
 
   const [isDragging, setDragging] = useState<boolean>(false);
   const [posX, setPosX] = useState<number>(0);
 
-  function skipChnageHandler(left: string) {
+  // managing the current position
+  function managePosition(left: string): void {
+    // check if the user dragged to left or right
     const isLeft = left === "left";
+
     const vocabSize = vocabs[currentZone].length - 1;
+
     if (isLeft) {
       setMovedLeft({ trigger: true, isLeft: true });
+
+      // if current position is 0, then move to last index of array
       currentPosition === 0
         ? setCurrentPosition(vocabSize)
         : setCurrentPosition(currentPosition - 1);
     } else {
       setMovedLeft({ trigger: true, isLeft: false });
+
+      // if current position is last index of array, then move to 0
       currentPosition === vocabSize
         ? setCurrentPosition(0)
         : setCurrentPosition(currentPosition + 1);
     }
   }
 
-  function pointerDownHandler() {
+  // when clicked dragging trigger is on
+  function pointerDownHandler(): void {
     setDragging(true);
   }
 
-  function pointerMoveHandler(e: any) {
+  // while dragging
+  function pointerMoveHandler(e: React.MouseEvent<HTMLDivElement>) {
     if (isDragging) {
       const { movementX } = e;
       setPosX((prev) => prev + movementX);
     }
   }
 
+  // when pointer is stopped
   function pointerCancelHandler() {
+    // if the user has dragged more than 80 pixel
     if (posX > 80) {
-      skipChnageHandler("left");
+      managePosition("left");
     } else if (posX < -80) {
-      skipChnageHandler("right");
+      managePosition("right");
     }
 
     setDragging(false);
@@ -89,6 +101,7 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
           </div>
         </div>
       ) : (
+        // when the current zone has no item
         <div className="vocabs__items">
           <div className="vocabs__items__front vocabs__items__front--none">
             <p>

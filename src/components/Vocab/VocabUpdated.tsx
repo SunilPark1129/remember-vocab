@@ -39,6 +39,11 @@ export default function VocabUpdated({
         }`,
       }}
     >
+      {/* 
+      all items opacity are 0 instead of display: none for animation purporse.
+      selected image becomes opacity: 1, 
+      and after a certain delay, it transitions back to an opacity of 0
+      */}
       <img
         src={imgUp}
         alt="up arrow"

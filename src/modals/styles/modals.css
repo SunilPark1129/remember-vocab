@@ -10,6 +10,7 @@
   pointer-events: none;
   overflow: hidden;
   border-radius: 4px;
+  transition: 0.3s opacity;
 }
 .modal__content {
   display: flex;

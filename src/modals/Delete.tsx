@@ -5,38 +5,40 @@ const units = ["first", "second", "third", "completed"];
 
 export default function Delete() {
   const setModal = useStore((store) => store.setModal);
-
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
+  const setDelete = useStore((store) => store.setDelete);
+
   const vocab = useStore((store) => [
     store.first,
     store.second,
     store.third,
     store.completed,
   ]);
-
-  const setDelete = useStore((store) => store.setDelete);
-
   const currentZone = useStore((store) => store.currentZone);
   const currentPosition = useStore((store) => store.currentPosition);
 
   useEffect(() => {
     if (vocab[currentZone].length === 0) {
+      // if the array is empty, close the modal
       setModal(null);
     }
   }, []);
 
   function clickHandler() {
-    if (vocab[currentZone].length !== 0) {
-      const zone = units[currentZone];
-      const { id } = vocab[currentZone][currentPosition];
-      const size = vocab[currentZone].length - 1;
+    const { id } = vocab[currentZone][currentPosition];
+    const zone = units[currentZone];
+    const size = vocab[currentZone].length - 1;
 
-      setDelete(zone, id);
-      if (currentPosition === size) {
-        setCurrentPosition(currentPosition - 1);
-      }
-      setModal(null);
+    // delete the current item from state management
+    setDelete(zone, id);
+
+    if (currentPosition === size) {
+      // if deleted last index of array, move to last index to prevent the error
+      setCurrentPosition(currentPosition - 1);
     }
+
+    // close modal
+    setModal(null);
   }
 
   return (

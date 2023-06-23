@@ -15,11 +15,20 @@ interface TriggerProperty {
 }
 
 export default function Vocabs() {
+  /*
+    boolean states for displaying the animation
+  */
+
+  // when an item is moved to a different zone, this trigger is activated
   const [hasUpgraded, setUpgraded] = useState<TriggerProperty>({
     trigger: false,
     isUp: true,
   });
+
+  // when the user pressed the shuffle icon, this trigger is activated
   const [hasShuffled, setShuffled] = useState<boolean>(false);
+
+  // when the user drag to sideways, this trigger is activated
   const [hasMovedLeft, setMovedLeft] = useState<TriggerProperty>({
     trigger: false,
     isLeft: true,
@@ -27,17 +36,19 @@ export default function Vocabs() {
 
   useEffect(() => {
     if (hasUpgraded.trigger || hasShuffled || hasMovedLeft.trigger) {
+      // set trigger back to false after the delay
+      // purpose: animation effect
       setTimeout(() => {
         hasUpgraded &&
           setUpgraded((prev: TriggerProperty) => ({
+            ...prev,
             trigger: false,
-            isUp: prev.isUp,
           }));
         hasShuffled && setShuffled(false);
         hasMovedLeft.trigger &&
           setMovedLeft((prev: TriggerProperty) => ({
+            ...prev,
             trigger: false,
-            isLeft: prev.isLeft,
           }));
       }, delay);
     }
@@ -54,15 +65,18 @@ export default function Vocabs() {
         }`,
       }}
     >
+      {/* displaying vocab text + dragging feature */}
       <VocabDisplay
         units={units}
         setMovedLeft={(prev: TriggerProperty) => setMovedLeft(prev)}
       />
+      {/* displaying features - flip, shuffle, upgrade */}
       <VocabFeature
         units={units}
         setUpgraded={(prev: TriggerProperty) => setUpgraded(prev)}
         setShuffled={(prev: boolean) => setShuffled(prev)}
       />
+      {/* displaying current index */}
       <VocabUpdated
         hasUpgraded={hasUpgraded}
         hasShuffled={hasShuffled}
