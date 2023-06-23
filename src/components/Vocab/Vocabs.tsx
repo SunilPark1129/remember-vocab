@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import VocabDisplay from "./VocabDisplay";
 import VocabFeature from "./VocabFeature";
 import VocabUpdated from "./VocabUpdated";
+import VocabRange from "./VocabRange";
 
 const delay = 500;
 const units: string[] = ["first", "second", "third", "completed"];
@@ -70,12 +71,17 @@ export default function Vocabs() {
         units={units}
         setMovedLeft={(prev: TriggerProperty) => setMovedLeft(prev)}
       />
+
       {/* displaying features - flip, shuffle, upgrade */}
       <VocabFeature
         units={units}
         setUpgraded={(prev: TriggerProperty) => setUpgraded(prev)}
         setShuffled={(prev: boolean) => setShuffled(prev)}
       />
+
+      {/* displaying input range */}
+      <VocabRange />
+
       {/* displaying current index */}
       <VocabUpdated
         hasUpgraded={hasUpgraded}
