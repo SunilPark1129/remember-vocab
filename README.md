@@ -10,42 +10,49 @@ Go to website - [Link](https://sp-remeber-vocab.netlify.app/)<br>
 ## Features
 > Follow steps to learn about how to use this app
 
+1. Click on 'Add' at the top to add a word.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/b79d23ac-81bc-4417-8cc9-eeade561f2f0" width="600"/><br/>
-Click on 'Add' at the top to add a word.<br/><br/>
 
+2. Repeat this process to add 3 to 5 words.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/5fd05bc3-1a7c-49c9-a19f-91c158b49224" width="600"/><br/>
-Repeat this process to add 3 to 5 words.<br/><br/>
 
+
+3. You can drag the words left or right to view different words.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/328b7018-a28f-44e9-9d2e-c229875fd929" width="600"/><br/>
-You can drag the words left or right to view different words.<br/><br/>
 
+
+4. Use the range input at the bottom to easily move between words.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/559b2d1c-2cee-4ab4-bf45-f60950f135a7" width="600"/><br/>
-Use the range input at the bottom to easily move between words.<br/><br/>
 
+
+5. Click on 'Delete' at the top to remove current viewing word.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/ab1b4d00-cf1f-4c9f-a3e8-c7973cae1c9e" width="600"/><br/>
-Click on 'Delete' at the top to remove current viewing word.<br/><br/>
 
+
+6. Click on 'Edit' at the top to modify the information of a word.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/7ec725af-33fc-47c4-a6a1-f72e5e139c3d" width="600"/><br/>
-Click on 'Edit' at the top to modify the information of a word.<br/><br/>
 
+
+7. Click on 'Shuffle' at the bottom to shuffle the orders.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/6fc3169a-f509-4164-b182-124183637f37" width="600"/><br/>
-Click on 'Shuffle' at the bottom to shuffle the orders.<br/><br/>
 
+
+8. Click on the left smiley to move the current word to the next stage.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/79eb8f87-aa89-4e32-b42f-008be231833f" width="600"/><br/>
-Click on the left smiley to move the current word to the next stage.<br/>
-When the user has memorized a word, it is moved to the next stage.<br/><br/>
+> When the user has memorized a word, it is moved to the next stage.
 
+9. To display the words in the next stage, click on 'Floor' at the top and select the blue color.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/0fc0d3c4-dc73-4bd7-950d-96a9bd96d46e" width="600"/><br/>
-To display the words in the next stage, click on 'Floor' at the top and select the blue color.<br/><br/>
 
+10. You can then see that the moved words from the previous stage are displayed.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/6399d05c-0c3b-4a89-a7d4-8ced5779c2e4" width="600"/><br/>
-You can then see that the moved words from the previous stage are displayed.<br/><br/>
 
+11. Click on 'Flip' at the bottom to view the description of a word.<br>
 <img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/10d76912-7e26-4bc6-9470-eee2b51ddc09" width="600"/><br/>
-11. Click on 'Flip' at the bottom to view the description of a word.<br/>
 
-<img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/18bc2b4f-91d6-419c-b7f8-9eda4d49e0b4" width="600"/><br/>
 12. Click on 'Question' at the top to see what other features are available.<br/>
+<img src="https://github.com/SunilPark1129/remember-vocab/assets/106734133/18bc2b4f-91d6-419c-b7f8-9eda4d49e0b4" width="600"/><br/>
+
 
 ## Technology Used
 
