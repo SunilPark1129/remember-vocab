@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, createRef } from "react";
 import { useStore } from "../../store";
 
 interface TriggerProperty {
@@ -14,6 +14,7 @@ interface PropsProprty {
 
 export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
+  const refScreen = useRef<HTMLDivElement>(null);
 
   const vocabs = useStore((store) => [
     store.first,
@@ -24,6 +25,7 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
   const currentZone: number = useStore((store) => store.currentZone);
   const currentPosition = useStore((store) => store.currentPosition);
   const isViewFront = useStore((store) => store.isViewFront);
+  const setViewFront = useStore((store) => store.setViewFront);
 
   const [isDragging, setDragging] = useState<boolean>(false);
   const [posX, setPosX] = useState<number>(0);
@@ -34,6 +36,11 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
     const isLeft = left === "left";
 
     const vocabSize = vocabs[currentZone].length - 1;
+
+    if (refScreen.current) {
+      refScreen.current.scrollTo(0, 0);
+      setViewFront(true);
+    }
 
     if (isLeft) {
       setMovedLeft({ trigger: true, isLeft: true });
@@ -96,7 +103,7 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
               <b>{vocabs[currentZone][currentPosition].title}</b>
             </p>
           </div>
-          <div className="vocabs__items__back">
+          <div ref={refScreen} className="vocabs__items__back">
             <p>{vocabs[currentZone][currentPosition].description}</p>
           </div>
         </div>
