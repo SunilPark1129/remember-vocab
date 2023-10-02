@@ -230,4 +230,48 @@
   background: #7b7c80;
   box-shadow: 1px 1px 1px rgba(61, 61, 61, 0.4941176471);
   cursor: pointer;
+}
+.vocabs__modal__permit {
+  position: absolute;
+  background-color: #fff;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-width: 20rem;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 999;
+  border-radius: 4px;
+}
+.vocabs__modal__permit span {
+  color: rgb(221, 93, 93);
+  font-size: 0.8rem;
+}
+.vocabs__modal__permit__btn {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+.vocabs__modal__permit__btn button {
+  padding: 0.25rem 1rem;
+  background-color: rgb(221, 93, 93);
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.vocabs__modal__permit__btn button:hover {
+  background-color: rgb(223, 166, 166);
+}
+.vocabs__modal__cover {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(63, 63, 63, 0.5);
+  cursor: pointer;
+  z-index: 99;
 }/*# sourceMappingURL=vocabs.css.map */

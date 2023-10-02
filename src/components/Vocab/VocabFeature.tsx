@@ -3,6 +3,7 @@ import imgFlip from "../../images/flip.svg";
 import imgHappy from "../../images/happy.svg";
 import imgSad from "../../images/sad.svg";
 import imgShuffle from "../../images/shuffle.svg";
+import { Fragment, useState } from "react";
 
 interface Payload {
   title: string;
@@ -27,6 +28,7 @@ export default function VocabFeature({
   setUpgraded,
   setShuffled,
 }: PropsProprty) {
+  const [hasAgreedShuffle, setHasAgreedShuffle] = useState<boolean>(false);
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
   const setViewFront = useStore((store) => store.setViewFront);
   const moveZone = useStore((store) => store.moveZone);
@@ -95,10 +97,16 @@ export default function VocabFeature({
     // replace the original array with the shuffled array
     setShuffle(units[currentZone], path);
     setCurrentPosition(0);
+    setHasAgreedShuffle(false);
+  }
+
+  function shuffleHandler(): void {
+    shuffle([...vocabs[currentZone]]);
+    setHasAgreedShuffle(false);
   }
 
   return (
-    <>
+    <Fragment>
       {/* displaying flip */}
       <div className="vocabs__flip">
         <button
@@ -145,14 +153,35 @@ export default function VocabFeature({
         {/* shuffle */}
         <button
           className="vocabs__btn"
-          onClick={() => {
-            shuffle([...vocabs[currentZone]]);
-          }}
+          onClick={() => setHasAgreedShuffle(true)}
           title="shuffle"
+          disabled={vocabs[currentZone].length === 0 ? true : false}
         >
           <img src={imgShuffle} alt="shuffle" />
         </button>
       </div>
-    </>
+      {hasAgreedShuffle ? (
+        <>
+          <div className="vocabs__modal__permit">
+            <div className="vocabs__modal__permit__text">
+              <p>
+                Do you really want to shuffle the sequentially listed items?
+              </p>
+              <p>
+                <span>Applying current floor only*</span>
+              </p>
+            </div>
+            <div className="vocabs__modal__permit__btn">
+              <button onClick={shuffleHandler}>YES</button>
+              <button onClick={() => setHasAgreedShuffle(false)}>NO</button>
+            </div>
+          </div>
+          <div
+            className="vocabs__modal__cover"
+            onClick={() => setHasAgreedShuffle(false)}
+          ></div>
+        </>
+      ) : null}
+    </Fragment>
   );
 }
