@@ -77,6 +77,7 @@
   overflow: auto;
   background-color: rgb(221, 226, 240);
   touch-action: pan-y;
+  font-size: 0.8rem;
 }
 .vocabs__items__back p {
   margin: auto;
@@ -86,7 +87,7 @@
 }
 @media (max-width: 400px) {
   .vocabs__items__back p {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
   }
 }
 .vocabs__items__back::-webkit-scrollbar {

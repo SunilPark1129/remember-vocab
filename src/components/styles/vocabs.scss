@@ -72,13 +72,14 @@
       overflow: auto;
       background-color: rgb(221, 226, 240);
       touch-action: pan-y;
+      font-size: 0.8rem;
       p {
         margin: auto;
         white-space: pre-wrap;
         word-break: break-word;
         padding: 1rem;
         @media (max-width: 400px) {
-          font-size: 0.9rem;
+          font-size: 0.7rem;
         }
       }
       &::-webkit-scrollbar {
