@@ -59,6 +59,14 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
     }
   }
 
+  function keyDownHandler(e: React.KeyboardEvent<HTMLDivElement>) {
+    if (e.key === "ArrowLeft") {
+      managePosition("left");
+    } else if (e.key === "ArrowRight") {
+      managePosition("right");
+    }
+  }
+
   // when clicked dragging trigger is on
   function pointerDownHandler(): void {
     setDragging(true);
@@ -93,10 +101,12 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
           style={{
             transform: `rotateY(${isViewFront ? "0deg" : "180deg"})`,
           }}
+          tabIndex={0}
           onPointerDown={pointerDownHandler}
           onPointerMove={pointerMoveHandler}
           onPointerUp={pointerCancelHandler}
           onPointerLeave={pointerCancelHandler}
+          onKeyDown={keyDownHandler}
         >
           <div className="vocabs__items__front vocabs__items__front--title">
             <p>
