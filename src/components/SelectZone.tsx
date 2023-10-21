@@ -8,6 +8,7 @@ export default function SelectZone() {
   const currentZone = useStore((store) => store.currentZone);
   const setCurrentZone = useStore((store) => store.setCurrentZone);
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
+  const setViewFront = useStore((store) => store.setViewFront);
 
   const [hasTriggerOn, setTriggerOn] = useState<boolean>(false);
 
@@ -25,6 +26,8 @@ export default function SelectZone() {
 
     // ignore when clicked the same zone
     if (currentZone === nextZone) return;
+
+    setViewFront(true);
 
     // zone address
     setCurrentZone(nextZone);
