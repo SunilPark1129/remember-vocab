@@ -1,11 +1,11 @@
 import Main from "./components/Main";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div className="App">
       <Main />
     </div>
   );
-}
+};
 
 export default App;

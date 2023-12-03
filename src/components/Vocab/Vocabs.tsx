@@ -1,5 +1,6 @@
 import "../styles/vocabs.css";
 import { useState, useEffect } from "react";
+import { Upgrade } from "../../model/trigger";
 
 import VocabDisplay from "./VocabDisplay";
 import VocabFeature from "./VocabFeature";
@@ -9,45 +10,30 @@ import VocabRange from "./VocabRange";
 const delay = 500;
 const units: string[] = ["first", "second", "third", "completed"];
 
-interface TriggerProperty {
-  trigger: boolean;
-  isUp?: boolean;
-  isLeft?: boolean;
-}
-
-export default function Vocabs() {
-  /*
-    boolean states for displaying the animation
-  */
-
-  // when an item is moved to a different zone, this trigger is activated
-  const [hasUpgraded, setUpgraded] = useState<TriggerProperty>({
+const Vocabs: React.FC = () => {
+  const [hasUpgraded, setUpgraded] = useState<Upgrade>({
     trigger: false,
     isUp: true,
   });
 
-  // when the user pressed the shuffle icon, this trigger is activated
   const [hasShuffled, setShuffled] = useState<boolean>(false);
 
-  // when the user drag to sideways, this trigger is activated
-  const [hasMovedLeft, setMovedLeft] = useState<TriggerProperty>({
+  const [hasMovedLeft, setMovedLeft] = useState<Upgrade>({
     trigger: false,
     isLeft: true,
   });
 
   useEffect(() => {
     if (hasUpgraded.trigger || hasShuffled || hasMovedLeft.trigger) {
-      // set trigger back to false after the delay
-      // purpose: animation effect
       setTimeout(() => {
         hasUpgraded &&
-          setUpgraded((prev: TriggerProperty) => ({
+          setUpgraded((prev: Upgrade) => ({
             ...prev,
             trigger: false,
           }));
         hasShuffled && setShuffled(false);
         hasMovedLeft.trigger &&
-          setMovedLeft((prev: TriggerProperty) => ({
+          setMovedLeft((prev: Upgrade) => ({
             ...prev,
             trigger: false,
           }));
@@ -66,16 +52,16 @@ export default function Vocabs() {
         }`,
       }}
     >
-      {/* displaying vocab text + dragging feature */}
+      {/* displaying vocab text */}
       <VocabDisplay
         units={units}
-        setMovedLeft={(prev: TriggerProperty) => setMovedLeft(prev)}
+        setMovedLeft={(prev: Upgrade) => setMovedLeft(prev)}
       />
 
-      {/* displaying features - flip, shuffle, upgrade */}
+      {/* displaying buttons - flip, shuffle, upgrade */}
       <VocabFeature
         units={units}
-        setUpgraded={(prev: TriggerProperty) => setUpgraded(prev)}
+        setUpgraded={(prev: Upgrade) => setUpgraded(prev)}
         setShuffled={(prev: boolean) => setShuffled(prev)}
       />
 
@@ -90,4 +76,6 @@ export default function Vocabs() {
       />
     </div>
   );
-}
+};
+
+export default Vocabs;

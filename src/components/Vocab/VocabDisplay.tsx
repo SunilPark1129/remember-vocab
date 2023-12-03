@@ -1,18 +1,13 @@
 import { useState, useRef, createRef } from "react";
 import { useStore } from "../../store";
+import { Upgrade } from "../../model/trigger";
 
-interface TriggerProperty {
-  trigger: boolean;
-  isUp?: boolean;
-  isLeft?: boolean;
-}
-
-interface PropsProprty {
+interface OwnProp {
   units: string[];
-  setMovedLeft: (prev: TriggerProperty) => void;
+  setMovedLeft: (prev: Upgrade) => void;
 }
 
-export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
+const VocabDisplay: React.FC<OwnProp> = ({ units, setMovedLeft }) => {
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
   const refScreen = useRef<HTMLDivElement>(null);
 
@@ -134,4 +129,6 @@ export default function VocabDisplay({ units, setMovedLeft }: PropsProprty) {
       )}
     </div>
   );
-}
+};
+
+export default VocabDisplay;

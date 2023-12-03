@@ -4,7 +4,7 @@ import Feature from "./Feature";
 import SelectZone from "./SelectZone";
 import Modals from "../modals/Modals";
 
-export default function Main() {
+const Main: React.FC = () => {
   return (
     <main>
       <div className="wrapper">
@@ -24,4 +24,6 @@ export default function Main() {
       </div>
     </main>
   );
-}
+};
+
+export default Main;

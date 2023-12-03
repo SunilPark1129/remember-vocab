@@ -4,30 +4,19 @@ import imgHappy from "../../images/happy.svg";
 import imgSad from "../../images/sad.svg";
 import imgShuffle from "../../images/shuffle.svg";
 import { Fragment, useState } from "react";
+import { Upgrade, Payload } from "../../model/trigger";
 
-interface Payload {
-  title: string;
-  description: string;
-  id: number;
-}
-
-interface TriggerProperty {
-  trigger: boolean;
-  isUp?: boolean;
-  isLeft?: boolean;
-}
-
-interface PropsProprty {
+interface OwnProp {
   units: string[];
-  setUpgraded: (prev: TriggerProperty) => void;
+  setUpgraded: (prev: Upgrade) => void;
   setShuffled: (prev: boolean) => void;
 }
 
-export default function VocabFeature({
+const VocabFeature: React.FC<OwnProp> = ({
   units,
   setUpgraded,
   setShuffled,
-}: PropsProprty) {
+}) => {
   const [hasAgreedShuffle, setHasAgreedShuffle] = useState<boolean>(false);
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
   const setViewFront = useStore((store) => store.setViewFront);
@@ -46,8 +35,6 @@ export default function VocabFeature({
   // upgrade or downgrade the item
   function upgradeClickHandler(e: React.MouseEvent<HTMLButtonElement>) {
     const { name } = e.target as HTMLButtonElement;
-
-    // check the clicked item is either up or down
     const isUp: boolean = name === "up";
 
     // if current zone is at the edge, break the function
@@ -59,7 +46,6 @@ export default function VocabFeature({
       return;
     }
 
-    // calculating the next zone as a string
     let nextZone: string = units[currentZone + (isUp ? 1 : -1)];
 
     const { title, description, id } = vocabs[currentZone][currentPosition];
@@ -69,29 +55,24 @@ export default function VocabFeature({
       id: id,
     };
 
-    // move the zone with using state management
     moveZone(units[currentZone], nextZone, payload);
 
     // if the current position is the last index of the array
-    // replace current position with last index - 1 to prevent error
+    // calculate current position
     if (currentPosition === vocabs[currentZone].length - 1) {
       setCurrentPosition(currentPosition - 1);
     }
-
-    // animation on
     setUpgraded({ trigger: true, isUp: isUp });
   }
 
   // shuffle the current zone array
   function shuffle(arr: object[], path: object[] = []) {
-    // shuffle event
     for (let i = 0; i < vocabs[currentZone].length; i++) {
       const ranNum = Math.floor(Math.random() * arr.length);
       const temp = arr.splice(ranNum, 1);
       path.push(...temp);
     }
 
-    // animation on
     setShuffled(true);
 
     // replace the original array with the shuffled array
@@ -107,7 +88,6 @@ export default function VocabFeature({
 
   return (
     <Fragment>
-      {/* displaying flip */}
       <div className="vocabs__flip">
         <button
           className="vocabs__btn"
@@ -184,4 +164,6 @@ export default function VocabFeature({
       ) : null}
     </Fragment>
   );
-}
+};
+
+export default VocabFeature;

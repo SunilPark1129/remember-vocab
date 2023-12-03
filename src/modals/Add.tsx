@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useStore } from "../store";
-
-interface InputProperty {
-  title: string;
-  description: string;
-}
+import { InputProperty } from "../model/modal";
 
 const initialValue = {
   title: "",

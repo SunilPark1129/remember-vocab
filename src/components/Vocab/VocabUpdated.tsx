@@ -2,24 +2,13 @@ import { useStore } from "../../store";
 import imgUp from "../../images/up.svg";
 import imgShuffleExp from "../../images/shuffle-express.svg";
 import imgSkipArrow from "../../images/skipArrow.svg";
+import { Update } from "../../model/trigger";
 
-interface TriggerProperty {
-  trigger: boolean;
-  isUp?: boolean;
-  isLeft?: boolean;
-}
-
-interface PropsProprty {
-  hasUpgraded: TriggerProperty;
-  hasShuffled: boolean;
-  hasMovedLeft: TriggerProperty;
-}
-
-export default function VocabUpdated({
+const VocabUpdated: React.FC<Update> = ({
   hasUpgraded,
   hasShuffled,
   hasMovedLeft,
-}: PropsProprty) {
+}) => {
   const vocabs = useStore((store) => [
     store.first,
     store.second,
@@ -39,11 +28,6 @@ export default function VocabUpdated({
         }`,
       }}
     >
-      {/* 
-      all items opacity are 0 instead of display: none for animation purporse.
-      selected image becomes opacity: 1, 
-      and after a certain delay, it transitions back to an opacity of 0
-      */}
       <img
         src={imgUp}
         alt="up arrow"
@@ -68,4 +52,6 @@ export default function VocabUpdated({
       <div className="vocabs__hasUpgraded__bg"></div>
     </div>
   );
-}
+};
+
+export default VocabUpdated;

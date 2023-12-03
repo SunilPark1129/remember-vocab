@@ -4,7 +4,7 @@ import { useStore } from "../store";
 
 const units = ["first", "second", "third", "completed"];
 
-export default function SelectZone() {
+const SelectZone: React.FC = () => {
   const currentZone = useStore((store) => store.currentZone);
   const setCurrentZone = useStore((store) => store.setCurrentZone);
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
@@ -14,7 +14,7 @@ export default function SelectZone() {
 
   // when clicked, different zones are displayed to enable moving to another zone
   function triggerHandler(): void {
-    // CSS style changes to display other zones
+    // CSS style transition trigger
     setTriggerOn(true);
   }
 
@@ -24,12 +24,10 @@ export default function SelectZone() {
     const nextZone: number = Number(value);
     setTriggerOn(false);
 
-    // ignore when clicked the same zone
+    // ignore when the user clicks the current zone
     if (currentZone === nextZone) return;
 
     setViewFront(true);
-
-    // zone address
     setCurrentZone(nextZone);
     setCurrentPosition(0);
   }
@@ -72,4 +70,6 @@ export default function SelectZone() {
       </div>
     </div>
   );
-}
+};
+
+export default SelectZone;

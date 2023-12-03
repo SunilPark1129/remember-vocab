@@ -3,7 +3,7 @@ import { useStore } from "../store";
 
 const units = ["first", "second", "third", "completed"];
 
-export default function Delete() {
+const Delete: React.FC = () => {
   const setModal = useStore((store) => store.setModal);
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
   const setDelete = useStore((store) => store.setDelete);
@@ -50,4 +50,6 @@ export default function Delete() {
       </div>
     </div>
   );
-}
+};
+
+export default Delete;

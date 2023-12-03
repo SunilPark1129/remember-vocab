@@ -1,18 +1,10 @@
 import { useState, useEffect } from "react";
 import { useStore } from "../store";
-
-interface InputProperty {
-  title: string;
-  description: string;
-}
-
-interface PayloadProprty extends InputProperty {
-  id: number;
-}
+import { InputProperty, PayloadProprty } from "../model/modal";
 
 const units = ["first", "second", "third", "completed"];
 
-export default function Edit() {
+const Edit: React.FC = () => {
   const setModal = useStore((store) => store.setModal);
   const setViewFront = useStore((store) => store.setViewFront);
   const setEdit = useStore((store) => store.setEdit);
@@ -103,4 +95,6 @@ export default function Edit() {
       </div>
     </div>
   );
-}
+};
+
+export default Edit;

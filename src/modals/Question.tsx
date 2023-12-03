@@ -1,5 +1,5 @@
 import { useStore } from "../store";
-export default function Question() {
+const Question: React.FC = () => {
   const setModal = useStore((store) => store.setModal);
   return (
     <div
@@ -58,4 +58,6 @@ export default function Question() {
       </div>
     </div>
   );
-}
+};
+
+export default Question;

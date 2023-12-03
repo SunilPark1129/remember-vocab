@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useStore } from "../../store";
 
-export default function VocabRange() {
+const VocabRange: React.FC = () => {
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
   const ref = useRef<HTMLInputElement | null>(null);
 
@@ -19,10 +19,6 @@ export default function VocabRange() {
     setCurrentPosition(Number(value));
   }
 
-  /*
-  remove selections
-  fixed the issue where dragging didn't work when something has been highlighted
-  */
   function mouseEnterHandler() {
     const selection: any = window.getSelection();
     selection.removeAllRanges();
@@ -43,4 +39,6 @@ export default function VocabRange() {
       />
     </div>
   );
-}
+};
+
+export default VocabRange;
