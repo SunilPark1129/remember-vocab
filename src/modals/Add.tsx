@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useStore } from "../store";
-import { InputProperty } from "../model/modal";
+import { InputProperty, FloorProperty } from "../model/modal";
 
 const initialValue = {
   title: "",
@@ -9,6 +9,7 @@ const initialValue = {
 
 export default function Add() {
   const [inputValue, setInputValue] = useState<InputProperty>(initialValue);
+  const [floor, setFloor] = useState<FloorProperty>("first");
 
   const setModal = useStore((store) => store.setModal);
   const addVocab = useStore((store) => store.addVocab);
@@ -16,7 +17,7 @@ export default function Add() {
   const setCurrentPosition = useStore((store) => store.setCurrentPosition);
   const setViewFront = useStore((store) => store.setViewFront);
 
-  const lastIndex = useStore((store) => store.first.length);
+  const lastIndex = useStore((store) => store[floor].length);
   const vocabID = useStore((store) => store.vocabID);
 
   function changeHandler(e: React.ChangeEvent): void {
@@ -29,18 +30,41 @@ export default function Add() {
   function clickHandler(): void {
     if (inputValue.title && inputValue.description) {
       // store new item into state management
-      addVocab(inputValue.title, inputValue.description, vocabID);
+      addVocab(inputValue.title, inputValue.description, floor, vocabID);
 
       setInputValue(initialValue);
 
+      let floorInNumber;
+
+      switch (floor) {
+        case "first":
+          floorInNumber = 0;
+          break;
+        case "second":
+          floorInNumber = 1;
+          break;
+        case "third":
+          floorInNumber = 2;
+          break;
+        case "completed":
+          floorInNumber = 3;
+          break;
+        default:
+          floorInNumber = 0;
+      }
+
       // address and display the last added item
-      setCurrentZone(0);
+      setCurrentZone(floorInNumber);
       setCurrentPosition(lastIndex);
       setViewFront(true);
 
       // close modal
       setModal(null);
     }
+  }
+
+  function floorClickHandler(val: FloorProperty) {
+    setFloor(val);
   }
 
   return (
@@ -62,6 +86,16 @@ export default function Add() {
           value={inputValue.description}
           onChange={changeHandler}
         />
+      </div>
+      <div className="modal__location">
+        <button onClick={() => floorClickHandler("first")}>First Floor</button>
+        <button onClick={() => floorClickHandler("second")}>
+          Second Floor
+        </button>
+        <button onClick={() => floorClickHandler("third")}>Third Floor</button>
+        <button onClick={() => floorClickHandler("completed")}>
+          Fourth Floor
+        </button>
       </div>
       <div className="modal__button">
         <button

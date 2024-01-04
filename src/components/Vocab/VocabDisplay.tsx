@@ -17,6 +17,7 @@ const VocabDisplay: React.FC<OwnProp> = ({ units, setMovedLeft }) => {
     store.third,
     store.completed,
   ]);
+
   const currentZone: number = useStore((store) => store.currentZone);
   const currentPosition = useStore((store) => store.currentPosition);
   const isViewFront = useStore((store) => store.isViewFront);
@@ -105,11 +106,15 @@ const VocabDisplay: React.FC<OwnProp> = ({ units, setMovedLeft }) => {
         >
           <div className="vocabs__items__front vocabs__items__front--title">
             <p>
-              <b>{vocabs[currentZone][currentPosition].title}</b>
+              {vocabs[currentZone][currentPosition]?.title && (
+                <b>{vocabs[currentZone][currentPosition].title}</b>
+              )}
             </p>
           </div>
           <div ref={refScreen} className="vocabs__items__back">
-            <p>{vocabs[currentZone][currentPosition].description}</p>
+            {vocabs[currentZone][currentPosition]?.description && (
+              <p>{vocabs[currentZone][currentPosition].description}</p>
+            )}
           </div>
         </div>
       ) : (

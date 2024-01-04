@@ -37,9 +37,9 @@ const store = (set: any) => ({
   // clear all datas
   clearData: () => set(initialState),
 
-  addVocab: (title: string, description: string, id: number) =>
+  addVocab: (title: string, description: string, floor: string, id: number) =>
     set((store: any) => ({
-      first: [...store.first, { title, description, id }],
+      [floor]: [...store[floor], { title, description, id }],
       vocabID: store.vocabID + 1,
     })),
 

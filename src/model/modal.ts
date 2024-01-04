@@ -6,3 +6,5 @@ export type InputProperty = {
 export type PayloadProprty = InputProperty & {
   id: number;
 };
+
+export type FloorProperty = "first" | "second" | "third" | "completed";
