@@ -16,6 +16,7 @@ const Delete: React.FC = () => {
   ]);
   const currentZone = useStore((store) => store.currentZone);
   const currentPosition = useStore((store) => store.currentPosition);
+  const setViewFront = useStore((store) => store.setViewFront);
 
   useEffect(() => {
     if (vocab[currentZone].length === 0) {
@@ -36,6 +37,8 @@ const Delete: React.FC = () => {
       // if deleted last index of array, move to last index to prevent the error
       setCurrentPosition(currentPosition - 1);
     }
+
+    setViewFront(true);
 
     // close modal
     setModal(null);
