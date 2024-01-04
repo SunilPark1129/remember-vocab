@@ -88,14 +88,33 @@ export default function Add() {
         />
       </div>
       <div className="modal__location">
-        <button onClick={() => floorClickHandler("first")}>First Floor</button>
-        <button onClick={() => floorClickHandler("second")}>
-          Second Floor
-        </button>
-        <button onClick={() => floorClickHandler("third")}>Third Floor</button>
-        <button onClick={() => floorClickHandler("completed")}>
-          Fourth Floor
-        </button>
+        <label>Floor Level</label>
+        <div>
+          <button
+            className={`${floor === "first" && "activated"}`}
+            onClick={() => floorClickHandler("first")}
+          >
+            First
+          </button>
+          <button
+            className={`${floor === "second" && "activated"}`}
+            onClick={() => floorClickHandler("second")}
+          >
+            Second
+          </button>
+          <button
+            className={`${floor === "third" && "activated"}`}
+            onClick={() => floorClickHandler("third")}
+          >
+            Third
+          </button>
+          <button
+            className={`${floor === "completed" && "activated"}`}
+            onClick={() => floorClickHandler("completed")}
+          >
+            Fourth
+          </button>
+        </div>
       </div>
       <div className="modal__button">
         <button

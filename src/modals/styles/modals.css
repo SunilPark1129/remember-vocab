@@ -236,4 +236,23 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.modal__location > div {
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+.modal__location button {
+  padding: 0.2rem 1rem;
+  background-color: rgb(221, 93, 93);
+  border: none;
+  cursor: pointer;
+  border-radius: 2px;
+  color: #fff;
+}
+.modal__location button:hover {
+  background-color: rgb(233, 129, 129);
+}
+.modal__location button.activated {
+  background-color: rgb(79, 93, 112);
 }/*# sourceMappingURL=modals.css.map */
