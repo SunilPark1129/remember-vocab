@@ -55,6 +55,7 @@ const VocabFeature: React.FC<OwnProp> = ({
       id: id,
     };
 
+    setViewFront(true);
     moveZone(units[currentZone], nextZone, payload);
 
     // if the current position is the last index of the array
