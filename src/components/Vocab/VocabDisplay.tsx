@@ -18,6 +18,57 @@ const VocabDisplay: React.FC<OwnProp> = ({ units, setMovedLeft }) => {
     store.completed,
   ]);
 
+  const vocabID = useStore((store) => store.vocabID);
+  const [first, second, third, completed] = vocabs;
+  const setUpdate = useStore((store) => store.setUpdate);
+  // console.log(first, vocabID);
+
+  function clickHandler() {
+    // console.log("clicked");
+    //     const one = JSON.parse(`[
+    //       {
+    //           "title": "ㅁㅇㄴㅁ",
+    //           "description": "ㅇㅁㄴㅇㅁㄴ",
+    //           "id": 0
+    //       },
+    //       {
+    //           "title": "유륭류",
+    //           "description": "ㅇ륭ㄹ",
+    //           "id": 1
+    //       },
+    //       {
+    //           "title": "ㅋㅋ",
+    //           "description": "ㅋㅋ",
+    //           "id": 3
+    //       }
+    //   ]`);
+    //     const two = JSON.parse(`[
+    //     {
+    //         "title": "ㄴㅇㅊㅊㅍㅍ",
+    //         "description": "ㅇㄴㅊㄴㅇ",
+    //         "id": 2
+    //     }
+    // ]`);
+    //     const three = JSON.parse(`[
+    //   {
+    //       "title": "ㅎㅎ",
+    //       "description": "ㅎㅎ",
+    //       "id": 4
+    //   }
+    // ]`);
+    //     const four = JSON.parse(`[
+    //   {
+    //       "title": "ㅜㅠ",
+    //       "description": "ㅠㅜ",
+    //       "id": 5
+    //   }
+    // ]`);
+    // console.log(one, two, three, four);
+
+    console.log(first, second, third, completed, vocabID);
+    // setUpdate(one, two, three, four, 6);
+  }
+
   const currentZone: number = useStore((store) => store.currentZone);
   const currentPosition = useStore((store) => store.currentPosition);
   const isViewFront = useStore((store) => store.isViewFront);
@@ -90,7 +141,7 @@ const VocabDisplay: React.FC<OwnProp> = ({ units, setMovedLeft }) => {
   }
 
   return (
-    <div className="vocabs__content">
+    <div className="vocabs__content" onClick={clickHandler}>
       {vocabs[currentZone].length > 0 ? (
         <div
           className="vocabs__items"
