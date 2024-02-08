@@ -37,6 +37,11 @@ const store = (set: any) => ({
   // clear all datas
   clearData: () => set(initialState),
 
+  setUpdate: (completed: StateProperty[]) =>
+    set((store: any) => ({
+      completed: completed,
+    })),
+
   addVocab: (title: string, description: string, floor: string, id: number) =>
     set((store: any) => ({
       [floor]: [...store[floor], { title, description, id }],

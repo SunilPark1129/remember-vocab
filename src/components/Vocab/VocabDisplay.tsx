@@ -22,6 +22,11 @@ const VocabDisplay: React.FC<OwnProp> = ({ units, setMovedLeft }) => {
   const currentPosition = useStore((store) => store.currentPosition);
   const isViewFront = useStore((store) => store.isViewFront);
   const setViewFront = useStore((store) => store.setViewFront);
+  const setUpdate = useStore((store) => store.setUpdate);
+
+  function clickHandler() {
+    console.log(vocabs[3]);
+  }
 
   const [isDragging, setDragging] = useState<boolean>(false);
   const [posX, setPosX] = useState<number>(0);
@@ -90,7 +95,7 @@ const VocabDisplay: React.FC<OwnProp> = ({ units, setMovedLeft }) => {
   }
 
   return (
-    <div className="vocabs__content">
+    <div className="vocabs__content" onClick={clickHandler}>
       {vocabs[currentZone].length > 0 ? (
         <div
           className="vocabs__items"
