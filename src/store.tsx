@@ -37,33 +37,6 @@ const store = (set: any) => ({
   // clear all datas
   clearData: () => set(initialState),
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  setUpdate: (completed: StateProperty[]) =>
-    set((store: any) => ({
-      completed: completed,
-=======
-=======
->>>>>>> parent of 5ae790c (Revert to before testing)
-  setUpdate: (
-    first: StateProperty[],
-    second: StateProperty[],
-    third: StateProperty[],
-    completed: StateProperty[],
-    vocabID: number
-  ) =>
-    set((store: any) => ({
-      first: first,
-      second: second,
-      third: third,
-      completed: completed,
-      vocabID: vocabID,
-<<<<<<< HEAD
->>>>>>> parent of 5ae790c (Revert to before testing)
-=======
->>>>>>> parent of 5ae790c (Revert to before testing)
-    })),
-
   addVocab: (title: string, description: string, floor: string, id: number) =>
     set((store: any) => ({
       [floor]: [...store[floor], { title, description, id }],
